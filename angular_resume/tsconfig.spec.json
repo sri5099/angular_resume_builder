@@ -1,8 +1,11 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.es5.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "../out-tsc/spec",
+    "module": "commonjs",
     "types": [
       "jasmine",
       "node"
@@ -10,10 +13,10 @@
   },
   "files": [
     "test.ts",
-    "polyfills.ts",
+    "polyfills.ts"
   ],
   "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }
