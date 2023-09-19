@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
-
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
@@ -14,13 +14,19 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { MessagingComponent } from './messaging/messaging.component';
+import { CommonModule } from '@angular/common';
 
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        SocketIoModule.forRoot(config),
+        FormsModule,
+        CommonModule,
     ],
     declarations: [
         AppComponent,
